@@ -18,7 +18,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
-(setq-default c-basic-offset 2)
+(setq-default c-basic-offset 4)
 
 ; Verilog mode is annoying
 (custom-set-variables
@@ -157,4 +157,19 @@
     ))
 
 (add-hook 'find-file-hook 'my-find-file-check-make-large-file-read-only-hook)
+
+(put 'scroll-left 'disabled nil)
+
+;;; Disable prompt on large file size. Annoying.
+(setq large-file-warning-threshold nil)
+
+;;; Save some visual space
+(tool-bar-mode -1)
+
+;;; Default to enable line numbers, good for debug
+(global-linum-mode t)
+
+;;; Touchpad scroll sensitivity is extremely high, this is good alternative:
+(global-set-key (quote [M-down]) (quote scroll-up-line))
+(global-set-key (quote [M-up]) (quote scroll-down-line)) 
 
